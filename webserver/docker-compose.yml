@@ -5,7 +5,7 @@ services:
     restart: always
     image: httpd:latest
     networks:
-      - robben
+      - backend
     labels:
       - traefik.http.routers.robben.rule=Host(`robben.bukovszki.hu`)
       - traefik.enable=true
@@ -19,5 +19,5 @@ services:
       - traefik.http.routers.robben.middlewares=middlewares-geoipfilter
 
 networks:
-  robben:
+  backend:
     external: true
