@@ -1,1 +1,23 @@
 #test
+services:
+
+  web-robben:
+    restart: always
+    image: httpd:latest
+    networks:
+      - robben
+    labels:
+      - traefik.http.routers.robben.rule=Host(`robben.bukovszki.hu`)
+      - traefik.enable=true
+      - traefik.docker.network=backend
+      - traefik.http.routers.robben.service=robben
+      - traefik.http.services.robben.loadbalancer.server.port=80
+      - traefik.http.routers.robben.tls=true
+      - traefik.http.routers.robben.tls.certresolver=letsencrypt
+      - traefik.http.routers.robben.tls.domains[0].main=robben.bukovszki.hu
+      - traefik.http.routers.robben.tls.domains[0].sans=robben.muc.bukovszki.hu
+      - traefik.http.routers.robben.middlewares=middlewares-geoipfilter
+
+networks:
+  robben:
+    external: true
