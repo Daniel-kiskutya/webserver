@@ -3,7 +3,7 @@ services:
 
   web-robben:
     restart: always
-    image: httpd:latest
+    image: danielkiskutya/webrobbe:latest
     networks:
       - backend
     labels:
