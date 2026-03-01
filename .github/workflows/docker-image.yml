@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Mycontainer/Dockerfile --tag danielkiskutya/webrobbe:latest
+      run: docker build Mycontainer/. --file Dockerfile --tag danielkiskutya/webrobbe:latest
 
     - name: Push to Dockerhub
       run: docker push danielkiskutya/webrobbe:latest
