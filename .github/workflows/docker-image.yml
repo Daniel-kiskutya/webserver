@@ -18,5 +18,8 @@ jobs:
     - name: Build the Docker image
       run: docker build Mycontainer --file Mycontainer/Dockerfile --tag danielkiskutya/webrobbe:latest
 
+    - name: Login to Dockehub
+      run: docker login -p ${{ secrets.DOCKERHUB }}
+      
     - name: Push to Dockerhub
       run: docker push danielkiskutya/webrobbe:latest
